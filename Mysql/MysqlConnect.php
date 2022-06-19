@@ -3,9 +3,9 @@
 function mysqlConnect()
 {
   $db_host = "fdb32.awardspace.net";
-  $db_username = "4051633_clinica";
-  $db_password = "trabppi2022";
-  $db_name = "4051633_clinica";
+  $db_username = "Classificados";
+  $db_password = "sawEvz7w1OEV?lg+";
+  $db_name = "4051633_Classificados";
 
   // dsn é apenas um acrônimo de database source name
   $dsn = "mysql:host=$db_host;dbname=$db_name;charset=utf8mb4";

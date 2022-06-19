@@ -1,4 +1,4 @@
-CREATE DATABASE classificados;
+CREATE DATABASE Classificados;
 
 CREATE TABLE base
 (
