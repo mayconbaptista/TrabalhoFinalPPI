@@ -3,7 +3,7 @@ CREATE DATABASE Classificados;
 CREATE TABLE base
 (
     id int NOT NULL AUTO_INCREMENT,
-    cep char(9) NOT NULL,
+    cep char(9) NOT NULL UNIQUE,
     cidade varchar(50) NOT NULL,
     estado char(2) NOT NULL,
     PRIMARY KEY(id)
@@ -26,7 +26,7 @@ CREATE TABLE anuncio
 (
     id int NOT NULL AUTO_INCREMENT,
     titulo varchar(20) NOT NULL,
-    descricao varchar(100),
+    descricao varchar(500),
     preco float NOT NULL,
     data_hora datetime,
     cep char(9) NOT NULL,
