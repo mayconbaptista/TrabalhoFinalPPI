@@ -1,1 +1,3 @@
-# TrabalhoFinalPPI
+# Trabalho Final PPI
+
+### Integrantes:
