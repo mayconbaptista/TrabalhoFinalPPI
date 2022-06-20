@@ -44,7 +44,7 @@
                     </div>
                     <div class="col-sm-3">
                         <label for="dataHora" class="form-label">Data & Hora</label>
-                        <input type="text" name="dataHora" id="dataHora" class="form-control" required>
+                        <input type="datetime-local" name="dataHora" id="dataHora" class="form-control" required>
                     </div>
                     <div class="col">
                         <label for="cep" class="form-label">Cep</label>
@@ -95,6 +95,7 @@
                     </div>
                 </div>
                 <div class="row mt-3">
+                    <!--campo a ser preenchido com ajax-->
                     <div class="col-sm-4">
                         <label for="categoria" class="form-label">Categoria</label>
                         <select name="categoria" id="categoria" class="form-select" required>
@@ -114,5 +115,6 @@
     </footer>
     <script src="../js/base.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="../js/buscaEndAjax.js"></script>
 </body>
 </html>
