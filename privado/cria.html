@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +28,11 @@
     </header>
     <main>
         <div class="container">
-            <form action="" method="post">
+            <form action="../CRUDs/CadastraAnuncio.php" method="post">
+                <div class="row" hidden>
+                    <label for="anunciante" class="form-label">id</label>
+                    <input type="number" name="anunciante" id="anunciante" class="form-control" value="1" required readonly>
+                </div>
                 <div class="row mt-3">
                     <label for="titulo" class="form-label">Titulo</label>
                     <input type="text" name="titulo" id="titulo" class="form-control" maxlength="20" required>
@@ -43,12 +47,12 @@
                         <input type="number" name="preco" id="preco" class="form-control" required>
                     </div>
                     <div class="col-sm-3">
-                        <label for="dataHora" class="form-label">Data & Hora</label>
-                        <input type="datetime-local" name="dataHora" id="dataHora" class="form-control" required>
+                        <label for="data_hora" class="form-label">Data & Hora</label>
+                        <input type="datetime-local" name="data_hora" id="data_hora" class="form-control" required>
                     </div>
                     <div class="col">
                         <label for="cep" class="form-label">Cep</label>
-                        <input type="text" name="cep" id="cep" class="form-control" onchange="buscaEnd(value)" required>
+                        <input type="text" name="cep" id="cep" class="form-control" onchange="buscaEndereco(value)" required>
                     </div>
                 </div>
                 <div class="row mt-3">

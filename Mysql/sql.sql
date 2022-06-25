@@ -4,6 +4,7 @@ CREATE TABLE base
 (
     id int NOT NULL AUTO_INCREMENT,
     cep char(9) NOT NULL UNIQUE,
+    bairro varchar(50) NOT NULL,
     cidade varchar(50) NOT NULL,
     estado char(2) NOT NULL,
     PRIMARY KEY(id)
