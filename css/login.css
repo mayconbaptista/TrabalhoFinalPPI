@@ -1,0 +1,104 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #323232;
+    border: none;
+}
+
+
+a.link-login{
+    font-size: .8rem;
+    color: blue;
+}
+
+a:hover{
+    color: #08558B;
+}
+
+.login-container{
+    background-color: #FFF;
+    border: 0.5px solid black;
+
+    margin-left: auto;
+    margin-right: auto;
+    
+    width: 400px;
+    padding: 20px 30px;
+    margin-top: 10vh;
+    border-radius: 10px;
+    text-align: center;
+}
+/*
+.login-container{
+
+    background-color: white;
+    width: 400px;
+    border: 0.5px solid black;
+    border-radius: 10px;
+    box-shadow: 10px;
+
+    padding: 20px 30px;
+
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+*/
+
+.form-login{
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.label-login, .input-login{
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.label-login{
+    font-weight: bold;
+    font-size: .8rem;
+}
+
+.input-login{
+    border-bottom: 2px solid #323232;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+input:focus{
+    border-bottom: 2px solid #08558B;
+}
+
+#cad-login{
+    display: block;
+}
+
+button{
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    height: 40px;
+    border-radius: 20px;
+    margin-top: 30px;
+    cursor: pointer;
+    color: #FFF;
+    background-color: #08558B;
+    font-weight: bold;
+    width: 80%;
+}
+
+button:hover{
+    background-color: #1B223C;
+    transition: .5s;
+}
+
+.div-login, .div-login-btn{
+    padding: 5px 10px;
+}

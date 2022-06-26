@@ -4,17 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../css/base.css">
+    
+    <link rel="stylesheet" href="../css/login.css">
     <title>Pagina de login</title>
 </head>
 <body>
+    
     <header>
-
+        <nav>
+            <a href="../index.html" class="logo">Home</a>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+                <li><a href="">Busca</a></li>
+                <li><a href="">Resultados</a></li>
+                <li><a href="">Cria Conta</a></li>
+                <li><a href="login.html">login</a></li>
+            </ul>
+        </nav>
     </header>
+    
     <main>
-
+        <div class="login-container" id="login-container">
+            <h1 id="login-title">Login</h1>
+            <form action="" method="post" class="form-login">
+                <div class="div-login">
+                    <label for="email" class="label-login">Usuário</label>
+                    <input type="email" name="email" id="email" class="input-login" required placeholder="Example@example.com">
+                </div>
+                <div class="div-login">
+                    <label for="senha" class="label-login">Senha</label>
+                    <input type="password" name="senha" id="senha" class="input-login" required placeholder="digite sua senha">
+                </div>
+                <div class="div-login-btn">
+                    <button type="button" onclick="">Entrar</button>
+                    <span id="resposta"></span>
+                </div>
+                <div class="div-login">
+                    <p id="p-login">não possui conta?</p>
+                    <a href="#" class="link-login">Cadastre-se</a>
+                </div>
+            </form>
+        </div>
     </main>
     <footer>
         
     </footer>
+    <script src="../js/base.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 </html>
