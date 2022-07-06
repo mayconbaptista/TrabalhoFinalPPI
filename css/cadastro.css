@@ -1,7 +1,44 @@
-main{
-    position: absolute;
-    max-width: 70%;
-    left: 50%;
-    transform: translateX(-50%);
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+    color: #323232;
+    border: none;
 }
+
+
+main{
+    background-color: #FFF;
+    border: 0.5px solid black;
+
+    margin-left: auto;
+    margin-right: auto;
+    
+    width: 400px;
+    padding: 20px 30px;
+    margin-top: 10vh;
+    border-radius: 10px;
+    text-align: center;  
+}
+
+label, input{
+    display: block;
+}
+
+label{
+    text-align: left;
+}
+
+input{
+    border: 0.5px solid black;
+    width: 90%;
+
+    padding: 5px 2px;
+    
+}
+
+input:focus{
+    border: 2px solid rgb(35, 35, 241);
+}
+

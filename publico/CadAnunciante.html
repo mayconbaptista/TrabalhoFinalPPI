@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Home</a>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+                <li><a href="">Busca</a></li>
+                <li><a href="">Resultados</a></li>
+                <li><a href="">Cria Conta</a></li>
+                <li><a href="login.html">login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form action="../CRUDs/CadAnunciante.php" method="post">
+            <div class="linha">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome">
+            </div>
+            <div class="linha">
+                <label for="cpf">Cpf</label>
+                <input type="text" name="cpf" id="cpf">
+            </div>
+            <div class="linha">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="linha">
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" id="senha">
+            </div>
+            <div class="linha">
+                <label for="telefone">Telefone</label>
+                <input type="tel" name="telefone" id="telefone">
+            </div>
+            <button>Alterar</button>
+        </form>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
