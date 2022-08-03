@@ -1,14 +1,24 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/base.css">
-    <title>Document</title>
+    <title>Anuncie Já - HOME</title>
+
+    <!-- JS - navbar -->
+    <script src="JavaScript/base.js"></script>
+    <!-- JS - Script para incluir anuncios -->
+    <script src="JavaScript/mostrarAnuncios.js"></script>
+
+    <!-- CSS - navbar -->
+    <link rel="stylesheet" href="CSS/base.css">
+    <!-- CSS - Estilo dos anuncios -->
+    <link rel="stylesheet" href="CSS/anuncios.css">
 </head>
 <body>
     <header>
+
         <nav>
             <a href="imgs/logo.png" class="logo">Classificados</a>
             <div class="mobile-menu">
@@ -23,18 +33,23 @@
                 <li><a href="">login</a></li>
             </ul>
         </nav>
+
     </header>
+
     <main>
-        <div id="container-busca">
 
-        </div>
-        <div id="container-exibicao">
+        <!-- Template para inserção de anuncios com javascript e requisição AJAX -->
+        <template>
+            <div class="anuncio">
+                <img class="anuncio-imagem" alt="{{alt-imagem}}" src="Images/{{prod-imagem}}">
+                <span class="anuncio-nome">{{prod-nome}}</span>
+                <span class="anuncio-preco">{{prod-preco}}</span>
+            </div>
+        </template>
 
-        </div>
     </main>
-    <footer>
 
+    <footer>
     </footer>
-    <script src="./js/base.js"></script>
 </body>
 </html>
