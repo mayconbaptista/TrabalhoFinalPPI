@@ -5,38 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anuncie Já - HOME</title>
-
-    <!-- JS - navbar -->
-    <script src="JavaScript/base.js"></script>
-    <!-- JS - Script para incluir anuncios -->
-    <script src="JavaScript/mostrarAnuncios.js"></script>
-
-    <!-- CSS - navbar -->
-    <link rel="stylesheet" href="CSS/base.css">
-    <!-- CSS - Estilo dos anuncios -->
-    <link rel="stylesheet" href="CSS/anuncios.css">
 </head>
 <body>
     <header>
 
         <nav>
-            <a href="imgs/logo.png" class="logo">Classificados</a>
-            <div class="mobile-menu">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
+            <a href="Images/logo.png" class="logo">Classificados</a>
             <ul class="nav-list">
-                <li><a href="">Busca</a></li>
-                <li><a href="">Resultados</a></li>
-                <li><a href="">Cria Conta</a></li>
-                <li><a href="">login</a></li>
+                <li><a href="Publico/criarConta.html">Cria Conta</a></li>
+                <li><a href="Publico/login.html">login</a></li>
             </ul>
         </nav>
 
     </header>
 
     <main>
+
+        <form id="busca-form">
+            <div class="busca-anuncios">
+                <label for="busca" class="busca-label">Busca</label>
+                <input type="text" id="busca" class="busca-input" placeholder="Busque com palavras chaves">
+                <span class="busca-mensagem"></span>
+            </div>
+        </form>
+        <hr>
 
         <!-- Template para inserção de anuncios com javascript e requisição AJAX -->
         <template>
@@ -50,6 +42,7 @@
     </main>
 
     <footer>
+
     </footer>
 </body>
 </html>
