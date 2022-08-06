@@ -114,7 +114,7 @@
     <main>
         <div class="search-box">
             <input type="search" name="search" id="search" class="search-txt" placeholder="pesquisar">
-            <a class="search-btn" href="#">
+            <a class="search-btn" id="search-btn" href="#" onclick="loadProducts(value)">
                 <img src="../imgs/search.svg" alt="" class="lupe-blue" width="30" height="30">
             </a>
         </div>
@@ -152,10 +152,11 @@
           };
         }
     
-        async function loadProducts() {
+        async function loadProducts(nome) {
     
+            alert("ok");
           try {
-            let response = await fetch("more-products.php");
+            let response = await fetch("more-products.php?nome="+nome);
             if (!response.ok) throw new Error(response.statusText);
             var products = await response.json();
           }
@@ -167,16 +168,20 @@
           renderProducts(products);
         }
     
+        /*
         window.onload = function () {
-          loadProducts();
+          var btn = window.document.getElementById("search-btn");
+          btn.addEventListener("click",loadProducts(btn.value));
         }
+        */
     
+        /*
         window.onscroll = function () {
-          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+          if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight * 0.3)) {
             loadProducts();
           }
         };
-    
+        */
       </script>
 </body>
 </html>
