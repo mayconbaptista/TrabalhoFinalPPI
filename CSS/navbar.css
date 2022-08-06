@@ -1,0 +1,31 @@
+header {
+    width: 100%;
+    color: #fefefe;
+    background-color: #14202a;
+    text-align: right;
+    margin: 0px;
+    padding: 10px;
+}
+
+nav {
+    background-color: #14202a;
+    text-align: right;
+    margin: 0px;
+    padding: 15px 50px;
+    position: sticky;
+    top: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fefefe;
+    margin: 0px 25px;
+}
+
+nav a:link, nav a:visited {
+    color: #fefefe;
+}
+
+nav a:hover {
+    cursor: pointer;
+}
