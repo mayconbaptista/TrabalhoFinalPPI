@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="CSS/navbar.css">
     <link rel="stylesheet" href="CSS/footer.css">
     <link rel="stylesheet" href="CSS/home.css">
+
+    <script src="JavaScript/homeBusca.js"></script>
 </head>
 <body>
     <header>
@@ -33,14 +35,18 @@
         </form>
         <hr>
 
+
+        <section id="prod-section">
         <!-- Template para inserção de anuncios com javascript e requisição AJAX -->
-        <template>
-            <div class="anuncio">
-                <img class="anuncio-imagem" alt="{{alt-imagem}}" src="Images/{{prod-imagem}}">
-                <span class="anuncio-nome">{{prod-nome}}</span>
-                <span class="anuncio-preco">{{prod-preco}}</span>
-            </div>
-        </template>
+            <template id="template">
+                <div class="anuncio">
+                    <img class="anuncio-imagem" alt="{{alt-imagem}}" src="Images/{{prod-imagem}}">
+                    <h4 class="anuncio-nome">{{prod-nome}}</h4>
+                    <p class="anuncio-preco">{{prod-preco}}</p>
+                    <p class="anuncio-descricao">{{prod-descricao}}</p>
+                </div>
+            </template>
+        </section>
 
     </main>
 
