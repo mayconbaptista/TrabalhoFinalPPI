@@ -92,11 +92,11 @@ try {
                 <?php
 
                     while($row = $stmt->fetch()) {
-                        $codigo = $row['codigo'];
-                        $nome = $row['titulo'];
-                        $descricao = $row['descricao'];
-                        $preco = $row['preco'];
-                        $data = $row['data_hora'];
+                        $codigo = htmlspecialchars($row['codigo']);
+                        $nome = htmlspecialchars($row['titulo']);
+                        $descricao = htmlspecialchars($row['descricao']);
+                        $preco = htmlspecialchars($row['preco']);
+                        $data = htmlspecialchars($row['data_hora']);
                         
                         echo <<<HTML
 

@@ -21,6 +21,7 @@ if(!$_SESSION['email']) {
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/navbar.css">
     <link rel="stylesheet" href="../CSS/footer.css">
+    <script src="../JavaScript/verificaTitulo.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
@@ -36,7 +37,7 @@ if(!$_SESSION['email']) {
 
     <main>
         <div class="container">
-            <form action="../CRUDs/cadastraAnuncio.php" method="post">
+            <form id="myForm" action="../CRUDs/cadastraAnuncio.php" method="post">
                 <div class="row" hidden>
                     <label for="anunciante" class="form-label">id</label>
                     <input type="number" name="anunciante" id="anunciante" class="form-control" value="1" required readonly>
@@ -111,12 +112,13 @@ if(!$_SESSION['email']) {
                     <div class="col-sm-4">
                         <label for="categoria" class="form-label">Categoria</label>
                         <select name="categoria" id="categoria" class="form-select" required>
-                            <option value="">Outro</option>
+                            <option value=""></option>
                             <option value="celular">Celular</option>
                             <option value="computadores">Computadores</option>
                             <option value="tablets">Tablets</option>
                             <option value="monitores">Monitores</option>
                             <option value="perifericos">Periféricos</option>
+                            <option value="outro">Outro</option>
                         </select>
                     </div>
                     <div class="col-sm-8 form-group">

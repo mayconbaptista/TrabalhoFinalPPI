@@ -30,7 +30,28 @@ $senha = $_POST['senha'] ?? "";
 
 if(checkLogin($pdo, $email, $senha)) {
     $_SESSION['email'] = $email;
+
+    try {
+        $sql = <<<SQL
+
+            SELECT codigo
+            FROM anunciante
+            WHERE email = ?
+
+        SQL;
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$email]);
+
+        $row = $stmt->fetch();
+        $_SESSION['id'] = $row['codigo'];
+
+    } catch(Exception $e) {
+        exit('Erro: ' . $e->getMessage());
+    }
+
     header('Location: ../Provado/logado.php');
+    exit;
 
 } else {
     header('Location: ../Publico/login.php');
