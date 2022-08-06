@@ -1,6 +1,4 @@
-CREATE DATABASE Classificados;
-
-CREATE TABLE base
+CREATE TABLE baseEnderecosAjax
 (
     id int NOT NULL AUTO_INCREMENT,
     cep char(9) NOT NULL UNIQUE,
@@ -13,19 +11,28 @@ CREATE TABLE base
 
 CREATE TABLE anunciante
 (
-    id int NOT NULL AUTO_INCREMENT,
+    codigo int NOT NULL AUTO_INCREMENT,
     nome varchar(50) NOT NULL,
     cpf char(11) NOT NULL UNIQUE,
     email varchar(30) NOT NULL UNIQUE,
     senhaHash varchar(50) NOT NULL,
     telefone char(11) NOT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(codigo)
 
+)ENGINE=InnoDB;
+
+CREATE TABLE categoria
+(
+    codigo int NOT NULL AUTO_INCREMENT,
+    nome varchar(50) NOT NULL,
+    descricao varchar(500) NOT NULL,
+
+    PRIMARY KEY(codigo)
 )ENGINE=InnoDB;
 
 CREATE TABLE anuncio
 (
-    id int NOT NULL AUTO_INCREMENT,
+    codigo int NOT NULL AUTO_INCREMENT,
     titulo varchar(20) NOT NULL,
     descricao varchar(500),
     preco float NOT NULL,
@@ -34,41 +41,32 @@ CREATE TABLE anuncio
     bairro varchar(20) NOT NULL,
     cidade varchar(50) NOT NULL,
     estado char(2) NOT NULL,
-    categoria_id int NOT NULL,
-    anunciante_id int NOT NULL,
+    codCategoria int NOT NULL,
+    codAnunciante int NOT NULL,
 
-    PRIMARY KEY(id),
-    FOREIGN KEY(categoria_id) REFERENCES categoria(id) ON DELETE CASCADE,
-    FOREIGN KEY(anunciante_id) REFERENCES anunciante(id) ON DELETE CASCADE
+    PRIMARY KEY(codigo),
+    FOREIGN KEY(codCategoria) REFERENCES categoria(codigo) ON DELETE CASCADE,
+    FOREIGN KEY(codAnunciante) REFERENCES anunciante(codigo) ON DELETE CASCADE
 ) ENGINE=InnoDB;
-
-CREATE TABLE categoria
-(
-    id int NOT NULL AUTO_INCREMENT,
-    nome varchar(50) NOT NULL,
-    descricao varchar(500) NOT NULL,
-
-    PRIMARY KEY(id)
-)ENGINE=InnoDB;
 
 CREATE TABLE interesse
 (
-    id int NOT NULL AUTO_INCREMENT,
+    codigo int NOT NULL AUTO_INCREMENT,
     mensagem varchar(500),
     data_hora datetime,
     contato char(11) NOT NULL,
-    anuncio_id int NOT NULL,
+    codAnuncio int NOT NULL,
 
-    PRIMARY KEY(id),
-    FOREIGN KEY(anuncio_id) REFERENCES anuncio(id) ON DELETE CASCADE
+    PRIMARY KEY(codigo),
+    FOREIGN KEY(codAnuncio) REFERENCES anuncio(codigo) ON DELETE CASCADE
 )ENGINE=InnoDB;
 
 CREATE TABLE foto
 (
-    id int NOT NULL,
-    anuncio_id int NOT NULL,
-    nome_arq_foto varchar(100) NOT NULL,
+    codigo int NOT NULL,
+    codAnuncio int NOT NULL,
+    nomeArqFoto varchar(100) NOT NULL,
 
-    FOREIGN KEY(anuncio_id) REFERENCES anuncio(id) ON DELETE CASCADE,
-    PRIMARY KEY(id, anuncio_id)
+    FOREIGN KEY(codAnuncio) REFERENCES anuncio(codigo) ON DELETE CASCADE,
+    PRIMARY KEY(codigo, codAnuncio)
 )ENGINE=InnoDB;

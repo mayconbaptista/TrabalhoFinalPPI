@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if($_SESSION['email']) {
+    header('Location: ../Privado/logado.php');
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -25,7 +35,7 @@
     <main>
         <div class="login-container" id="login-container">
             <h1 id="login-title">Login</h1>
-            <form action="" method="post" class="form-login">
+            <form action="../PHP/initLogin.php" method="post" class="form-login">
                 <div class="div-login">
                     <label for="email" class="label-login">Usuário</label>
                     <input type="email" name="email" id="email" class="input-login" required placeholder="Example@example.com">

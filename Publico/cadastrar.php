@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if($_SESSION['email']) {
+    header('Location: ../Privado/logado.php');
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="pt-br">

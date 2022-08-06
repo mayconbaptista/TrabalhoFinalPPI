@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -17,10 +23,26 @@
 <body>
     <header>
 
-        <nav>
-            <a href="Publico/cadastrar.html">Cadastrar</a>
-            <a href="Publico/login.html">Login</a>
-        </nav>
+
+        <?php
+        
+            if($_SESSION['email'])
+                echo <<<HTML
+                    <nav>
+                        <a href="Publico/cadastrar.html">Cadastrar</a>
+                        <a href="Publico/login.html">Login</a>
+                    </nav>
+                HTML;
+
+            else
+                echo <<<HTML
+                    <nav>
+                        <a href="../.">HOME</a>
+                        <a href="../PHP/desloga.php">SAIR</a>
+                    </nav>
+                HTML;
+        
+        ?>
 
     </header>
 

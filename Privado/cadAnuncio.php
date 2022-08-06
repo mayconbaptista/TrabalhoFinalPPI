@@ -1,6 +1,11 @@
 <?php
 
+session_start();
 
+if(!$_SESSION['email']) {
+    header('Location: ../Publico/login.php');
+    exit;
+}
 
 ?>
 
@@ -10,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuncie Já - Cadastrar Anúncio</title>
+    <title>Faça seu anúncio</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/reset.css">
@@ -23,15 +28,15 @@
     <header>
 
         <nav>
-            <a href="../Publico/cadastrar.html">Cadastrar</a>
-            <a href="../Publico/login.html">Login</a>
+            <a href="../.">HOME</a>
+            <a href="../PHP/desloga.php">SAIR</a>
         </nav>
 
     </header>
 
     <main>
         <div class="container">
-            <form action="../CRUDs/CadastraAnuncio.php" method="post">
+            <form action="../CRUDs/cadastraAnuncio.php" method="post">
                 <div class="row" hidden>
                     <label for="anunciante" class="form-label">id</label>
                     <input type="number" name="anunciante" id="anunciante" class="form-control" value="1" required readonly>

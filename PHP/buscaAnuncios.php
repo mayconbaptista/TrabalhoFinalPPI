@@ -73,7 +73,7 @@ try {
 
     $aux = <<<SQL
 
-        ORDER BY DataHora DESC
+        ORDER BY data_hora DESC
 
     SQL;
     $sql = $sql . $aux;
