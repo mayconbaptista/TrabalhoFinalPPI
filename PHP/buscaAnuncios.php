@@ -53,11 +53,12 @@ $palavrasChave = $_GET['busca'] ?? '';
 $palavras = separaPalavras($palavrasChave);
 
 $pdo = mysqlConnect();
+$arr = [];
 
 try {
     $sql = <<<SQL
 
-        SELECT codigo
+        SELECT codigo, titulo, descricao, preco
         FROM anuncio
         WHERE 1 = 1 AND
 
@@ -77,15 +78,31 @@ try {
     SQL;
     $sql = $sql . $aux;
 
-    $stmt->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->execute($palavras);
 
-    // TODO: buscar caminhos das imagens
+    $i = 0;
+    while($row = $stmt->fetch()) {
+        $codigo = $row['codigo'];
+
+        $sql = <<<SQL
+            SELECT nomeArqFoto
+            FROM foto
+            WHERE codAnuncio = ?
+        SQL;
+
+        $stmt2 = $pdo->prepare($sql);
+        $stmt2->execute([$codigo]);
+
+        $row2 = $stmt2->fetch();
+        $arr[$i] = new anuncio($row['nome'], $row['descricao'], $row['preco'], $row2['nomeArqFoto']);
+    }
 
 } catch(Exception $e) {
     exit('Erro: ' . $e->getMessage());
 }
 
-// TODO: Retorna JSON
+$arrAnun = new arrayAnuncios($arr);
+echo json_encode($arrAnun);
 
 ?>
