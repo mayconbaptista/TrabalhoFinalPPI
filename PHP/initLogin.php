@@ -15,7 +15,7 @@ function checkLogin($pdo, $email, $senha) {
         $row = $stmt->fetch();
         if (!$row) return false;
 
-        return password_verify($senha, $row['hash_senha']);
+        return password_verify($senha, $row['senhaHash']);
 
     } catch (Exception $e) {
         exit('Falha inesperada: ' . $e->getMessage());
@@ -50,7 +50,7 @@ if(checkLogin($pdo, $email, $senha)) {
         exit('Erro: ' . $e->getMessage());
     }
 
-    header('Location: ../Provado/logado.php');
+    header('Location: ../Privado/logado.php');
     exit;
 
 } else {

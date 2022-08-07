@@ -1,10 +1,13 @@
 <?php
 
 session_start();
-if(isset($_SESSION['email'])) {
-    header('Location: ../Privado/logado.php');
+if(!isset($_SESSION['email'])) {
+    header("Location: ../PHP/desloga.php");
     exit;
 }
+
+$idAnuncio = $_GET['id'];
+$_SESSION['idAnuncio'] = $idAnuncio;
 
 ?>
 
@@ -14,25 +17,29 @@ if(isset($_SESSION['email'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuncie Já - Cadastrar</title>
+    <title>Alterar anúncio</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/navbar.css">
     <link rel="stylesheet" href="../CSS/footer.css">
     <link rel="stylesheet" href="../CSS/cadastrar.css">
+    <script src="../JavaScript/preencheAlterarPerfil.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
 
         <nav>
-            <a href="cadastrar.html">Cadastrar</a>
-            <a href="login.html">Login</a>
+            <a href="../.">HOME</a>
+            <a href="../PHP/desloga.php">SAIR</a>
         </nav>
 
     </header>
 
-    <main>
+    <main class="container">
+
         <form action="../PHP/cadastrar.php" method="post">
 
             <fieldset>
@@ -54,24 +61,16 @@ if(isset($_SESSION['email'])) {
             <fieldset>
                 <legend>Informaçẽs de Login</legend>
                 <div>
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Registre seu E-mail">
-                </div>
-                <div>
                     <label for="senha">Senha</label>
                     <input type="password" name="senha" id="senha" placeholder="Registre sua senha">
                 </div>
             </fieldset>
 
             <div class="form-btn">
-                <button>Cadastrar</button>
-            </div>
-
-            <div class="div-login">
-                <p id="p-login">Já possui conta?</p>
-                <a href="login.html" class="link-login">Faça Login</a>
+                <button>Alterar</button>
             </div>
         </form>
+
     </main>
 
     <footer>

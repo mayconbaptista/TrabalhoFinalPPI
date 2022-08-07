@@ -1,6 +1,6 @@
 CREATE TABLE baseEnderecosAjax
 (
-    id int NOT NULL AUTO_INCREMENT,
+    codigo int NOT NULL AUTO_INCREMENT,
     cep char(9) NOT NULL UNIQUE,
     bairro varchar(50) NOT NULL,
     cidade varchar(50) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE anunciante
     nome varchar(50) NOT NULL,
     cpf char(11) NOT NULL UNIQUE,
     email varchar(30) NOT NULL UNIQUE,
-    senhaHash varchar(50) NOT NULL,
+    senhaHash varchar(250) NOT NULL,
     telefone char(11) NOT NULL,
     PRIMARY KEY(codigo)
 
@@ -63,10 +63,10 @@ CREATE TABLE interesse
 
 CREATE TABLE foto
 (
-    codigo int NOT NULL,
+    codigo int NOT NULL AUTO_INCREMENT,
     codAnuncio int NOT NULL,
-    nomeArqFoto varchar(100) NOT NULL,
+    nomeArqFoto varchar(400) NOT NULL,
 
     FOREIGN KEY(codAnuncio) REFERENCES anuncio(codigo) ON DELETE CASCADE,
-    PRIMARY KEY(codigo, codAnuncio)
+    PRIMARY KEY(codigo)
 )ENGINE=InnoDB;

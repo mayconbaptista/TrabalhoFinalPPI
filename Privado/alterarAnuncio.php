@@ -1,11 +1,13 @@
 <?php
 
 session_start();
-
 if(!isset($_SESSION['email'])) {
-    header('Location: ../Publico/login.php');
+    header("Location: ../PHP/desloga.php");
     exit;
 }
+
+$idAnuncio = $_GET['id'];
+$_SESSION['idAnuncio'] = $idAnuncio;
 
 ?>
 
@@ -15,13 +17,14 @@ if(!isset($_SESSION['email'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faça seu anúncio</title>
+    <title>Alterar anúncio</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/navbar.css">
     <link rel="stylesheet" href="../CSS/footer.css">
     <script src="../JavaScript/verificaTitulo.js"></script>
+    <script src="../JavaScript/preencheAlterar.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
@@ -35,9 +38,10 @@ if(!isset($_SESSION['email'])) {
 
     </header>
 
-    <main>
-        <div class="container">
-            <form id="myForm" action="../PHP/cadastraAnuncio.php" method="post">
+    <main class="container">
+
+    <div class="container">
+            <form id="myForm" action="../PHP/alterarAnuncio.php" method="post">
                 <div class="row mt-3">
                     <label for="titulo" class="form-label">Titulo</label>
                     <input type="text" name="titulo" id="titulo" class="form-control" maxlength="20" required>
@@ -103,30 +107,12 @@ if(!isset($_SESSION['email'])) {
                         </select>
                     </div>
                 </div>
-                <div class="row mt-3">
-                    <!--campo a ser preenchido com ajax-->
-                    <div class="col-sm-4">
-                        <label for="categoria" class="form-label">Categoria</label>
-                        <select name="categoria" id="categoria" class="form-select" required>
-                            <option value=""></option>
-                            <option value="celular">Celular</option>
-                            <option value="computadores">Computadores</option>
-                            <option value="tablets">Tablets</option>
-                            <option value="monitores">Monitores</option>
-                            <option value="perifericos">Periféricos</option>
-                            <option value="outro">Outro</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-8 form-group">
-                        <label for="imagem" class="form-label">Imagem</label>
-                        <input id="imagem" type="file" class="form-control" name="imagem">
-                    </div>
-                </div>
                 <div class="align-self-center mx-auto">
                     <button type="submit" class="btn btn-outline-primary mt-3">Cadastrar</button>
                 </div>
             </form>
         </div>
+
     </main>
 
     <footer>

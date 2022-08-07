@@ -1,9 +1,8 @@
 <?php
 
 session_start();
-
 if(!isset($_SESSION['email'])) {
-    header('Location: ../Publico/login.php');
+    header("Location: ../PHP/desloga.php");
     exit;
 }
 
@@ -15,12 +14,13 @@ if(!isset($_SESSION['email'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuncie Já - Bem vindo, Anunciante!</title>
+    <title>Excluir interresse</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/navbar.css">
     <link rel="stylesheet" href="../CSS/footer.css">
+    <script src="../JavaScript/listaIdInteresse.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
@@ -33,17 +33,19 @@ if(!isset($_SESSION['email'])) {
         </nav>
 
     </header>
+    
+    <main class="container">
 
-    <main class="container p-3">
+        <form action="../PHP/excluirInteresse.php" method="GET">
+            <div class="row">
+                <label for="id" class="form-label">ID do Interesse</label>
+                <select name="id" id="id" class="form-select" required>
+                    <option value="" selected></option>
+                </select>
+            </div>
 
-        <ul class="list-group">
-            <li class="list-group-item"><a href="cadAnuncio.php">Fazer Anúncio</a></li>
-            <li class="list-group-item"><a href="listarAnuncios.php">Mostrar Meus Anúncios</a></li>
-            <li class="list-group-item"><a href="escolherAnuncioAlterar.php">Editar Anúncio</a></li>
-            <li class="list-group-item"><a href="">Excluir Anúncio</a></li>
-            <li class="list-group-item"><a href="">Ver Menssagens de Interesse</a></li>
-            <li class="list-group-item"><a href="">Editar Perfil</a></li>
-        </ul>
+            <button class="btn btn-danger">Excluir</button>
+        </form>
 
     </main>
 

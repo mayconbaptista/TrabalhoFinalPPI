@@ -10,6 +10,7 @@ async function requisicao() {
 
     } catch(error) {
         console.error(error);
+        alert('Você já tem um anúncio com esse título!');
     }
 }
 

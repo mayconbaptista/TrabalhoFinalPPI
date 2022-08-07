@@ -9,23 +9,19 @@ if(!isset($_SESSION['email'])) {
 require "../ConexaoMySQL/MysqlConnect.php";
 $pdo = mysqlConnect();
 
-$codigo = $_SESSION['id'];
-if(!$codigo)
-    exit;
-
+$id = $_SESSION['id'];
 $sql = <<<SQL
 
-    SELECT codigo, titulo, descricao, preco, data_hora
-    FROM anuncio
-    WHERE codAnunciante = ?
+    SELECT interesse.* FROM interesse, anuncio
+    WHERE anuncio.codAnunciante = $id AND
+        interesse.codAnuncio = anuncio.codigo
 
 SQL;
 
-try {
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$codigo]);
+try{
+    $stmt = $pdo->query($sql);
 
-} catch (Exception $e) {
+} catch(Exception $e) {
     exit('ERRO: ' . $e->getMessage());
 }
 
@@ -37,7 +33,7 @@ try {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Meus Anúncios</title>
+    <title>Interesses dos Anúncios</title>
     
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/reset.css">
@@ -64,10 +60,10 @@ try {
             <thead>
                 <tr>
                     <th>Código</th>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Preço</th>
+                    <th>Mensagem</th>
                     <th>Data</th>
+                    <th>Contato</th>
+                    <th>Código Anúncios</th>
                 </tr>
             </thead>
 
@@ -77,10 +73,10 @@ try {
 
                     while($row = $stmt->fetch()) {
                         $codigo = htmlspecialchars($row['codigo']);
-                        $nome = htmlspecialchars($row['titulo']);
-                        $descricao = htmlspecialchars($row['descricao']);
-                        $preco = htmlspecialchars($row['preco']);
-                        $data = htmlspecialchars($row['data_hora']);
+                        $nome = htmlspecialchars($row['mensagem']);
+                        $descricao = htmlspecialchars($row['data_hora']);
+                        $preco = htmlspecialchars($row['contato']);
+                        $data = htmlspecialchars($row['codAnuncio']);
                         
                         echo <<<HTML
 

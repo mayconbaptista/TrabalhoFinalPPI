@@ -11,7 +11,7 @@ function salvarImagem($imagem, $titulo) {
 require "../ConexaoMySQL/MysqlConnect.php";
 $pdo = mysqlConnect();
 
-if(!$_SESSION['email']) {
+if(!isset($_SESSION['email'])) {
     header("../PHP/desloga.php");
     exit;
 }

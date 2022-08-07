@@ -19,6 +19,7 @@ session_start();
     <link rel="stylesheet" href="CSS/home.css">
 
     <script src="JavaScript/homeBusca.js"></script>
+    <script src="JavaScript/abrirAnuncio.js"></script>
 </head>
 <body>
     <header>
@@ -26,19 +27,20 @@ session_start();
 
         <?php
         
-            if($_SESSION['email'])
+            if(!isset($_SESSION['email']))
                 echo <<<HTML
                     <nav>
-                        <a href="Publico/cadastrar.html">Cadastrar</a>
-                        <a href="Publico/login.html">Login</a>
+                        <a href="Publico/cadastrar.php">Cadastrar</a>
+                        <a href="Publico/login.php">Login</a>
                     </nav>
                 HTML;
 
             else
                 echo <<<HTML
                     <nav>
-                        <a href="../.">HOME</a>
-                        <a href="../PHP/desloga.php">SAIR</a>
+                        <a href=".">HOME</a>
+                        <a href="Privado/logado.php">PERFIL</a>
+                        <a href="PHP/desloga.php">SAIR</a>
                     </nav>
                 HTML;
         

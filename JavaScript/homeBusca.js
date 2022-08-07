@@ -27,6 +27,13 @@ function mostraProdutos(objJS) {
 
         section.insertAdjacentElementHTML("beforeend", html);
     }
+
+    let h4s = document.querySelectorAll(".anuncio-nome");
+    for(let h4 of h4s) {
+        h4.onclick = () => {
+            window.location.href = "../Publico/exibeAnuncio.php?nome=" + h4.textContent;
+        }
+    }
 }
 
 function requisitaAnuncios(strKeyWords) {
