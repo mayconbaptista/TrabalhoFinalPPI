@@ -13,7 +13,7 @@ function checkLogin($pdo, $email, $senha) {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$email]);
         $row = $stmt->fetch();
-        if (!$row) return false;
+        if(!$row) return false;
 
         return password_verify($senha, $row['senhaHash']);
 

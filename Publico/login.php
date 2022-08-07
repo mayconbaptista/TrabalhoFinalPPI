@@ -51,7 +51,7 @@ if(isset($_SESSION['email'])) {
             </form>
             <div class="div-login">
                 <p id="p-login">Não possui conta?</p>
-                <a href="cadastrar.html" class="link-login">Cadastre-se</a>
+                <a href="cadastrar.php" class="link-login">Cadastre-se</a>
             </div>
         </div>
     </main>

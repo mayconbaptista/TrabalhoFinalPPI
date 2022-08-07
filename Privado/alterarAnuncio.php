@@ -33,6 +33,7 @@ $_SESSION['idAnuncio'] = $idAnuncio;
 
         <nav>
             <a href="../.">HOME</a>
+            <a href="../Privado/logado.php">PERFIL</a>
             <a href="../PHP/desloga.php">SAIR</a>
         </nav>
 

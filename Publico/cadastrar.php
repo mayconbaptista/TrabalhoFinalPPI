@@ -26,6 +26,7 @@ if(isset($_SESSION['email'])) {
     <header>
 
         <nav>
+            <a href="../">HOME</a>
             <a href="cadastrar.html">Cadastrar</a>
             <a href="login.html">Login</a>
         </nav>
@@ -69,7 +70,7 @@ if(isset($_SESSION['email'])) {
 
             <div class="div-login">
                 <p id="p-login">Já possui conta?</p>
-                <a href="login.html" class="link-login">Faça Login</a>
+                <a href="login.php" class="link-login">Faça Login</a>
             </div>
         </form>
     </main>

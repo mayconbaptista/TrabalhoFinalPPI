@@ -29,6 +29,7 @@ if(!isset($_SESSION['email'])) {
 
         <nav>
             <a href="../.">HOME</a>
+            <a href=".">PERFIL</a>
             <a href="../PHP/desloga.php">SAIR</a>
         </nav>
 

@@ -5,7 +5,7 @@ CREATE TABLE baseEnderecosAjax
     bairro varchar(50) NOT NULL,
     cidade varchar(50) NOT NULL,
     estado char(2) NOT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(codigo)
 
 )ENGINE=InnoDB;
 
@@ -15,7 +15,7 @@ CREATE TABLE anunciante
     nome varchar(50) NOT NULL,
     cpf char(11) NOT NULL UNIQUE,
     email varchar(30) NOT NULL UNIQUE,
-    senhaHash varchar(250) NOT NULL,
+    senhaHash varchar(500) NOT NULL,
     telefone char(11) NOT NULL,
     PRIMARY KEY(codigo)
 
