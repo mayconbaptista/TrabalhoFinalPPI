@@ -108,22 +108,15 @@ if(!$_SESSION['email']) {
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <!--campo a ser preenchido com ajax-->
                     <div class="col-sm-4">
                         <label for="categoria" class="form-label">Categoria</label>
                         <select name="categoria" id="categoria" class="form-select" required>
-                            <option value=""></option>
-                            <option value="celular">Celular</option>
-                            <option value="computadores">Computadores</option>
-                            <option value="tablets">Tablets</option>
-                            <option value="monitores">Monitores</option>
-                            <option value="perifericos">Periféricos</option>
-                            <option value="outro">Outro</option>
+        
                         </select>
                     </div>
                     <div class="col-sm-8 form-group">
-                        <label for="imagem" class="form-label">Imagem</label>
-                        <input id="imagem" type="file" class="form-control" name="imagem">
+                        <label for="nome_arq_foto" class="form-label">Nome Foto</label>
+                        <input type="text" name="nome_arq_foto" id="nome_arq_foto" class="form-control" required>
                     </div>
                 </div>
                 <div class="align-self-center mx-auto">
@@ -138,5 +131,7 @@ if(!$_SESSION['email']) {
         <p>Copyright &copy; 2022 - Todos direitos reserados.</p>
 
     </footer>
+    <script src="../JavaScript/buscaCategoria.js"></script>
+    <script src="../JavaScript/buscaCep.js"></script>
 </body>
 </html>

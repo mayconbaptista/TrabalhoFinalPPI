@@ -15,7 +15,7 @@ function checkLogin($pdo, $email, $senha) {
         $row = $stmt->fetch();
         if (!$row) return false;
 
-        return password_verify($senha, $row['hash_senha']);
+        return password_verify($senha, $row['senhaHash']);
 
     } catch (Exception $e) {
         exit('Falha inesperada: ' . $e->getMessage());
@@ -34,7 +34,7 @@ if(checkLogin($pdo, $email, $senha)) {
     try {
         $sql = <<<SQL
 
-            SELECT codigo
+            SELECT id
             FROM anunciante
             WHERE email = ?
 
@@ -44,13 +44,13 @@ if(checkLogin($pdo, $email, $senha)) {
         $stmt->execute([$email]);
 
         $row = $stmt->fetch();
-        $_SESSION['id'] = $row['codigo'];
+        $_SESSION['id'] = $row['id'];
 
     } catch(Exception $e) {
         exit('Erro: ' . $e->getMessage());
     }
 
-    header('Location: ../Provado/logado.php');
+    header('Location: ../Privado/logado.php');
     exit;
 
 } else {

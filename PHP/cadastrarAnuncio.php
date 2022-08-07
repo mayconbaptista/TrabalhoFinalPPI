@@ -2,13 +2,16 @@
 
 session_start();
 
+/*
 function salvarImagem($imagem, $titulo) {
     $fp = fopen("ImagensAnuncios/" . $titulo, "wb");
     fwrite($fp, $imagem);
     fclose($fp);
 }
+*/
 
 require "../ConexaoMySQL/MysqlConnect.php";
+
 $pdo = mysqlConnect();
 
 if(!$_SESSION['email']) {
@@ -16,51 +19,55 @@ if(!$_SESSION['email']) {
     exit;
 }
 
-$titulo = $_POST['titulo'] ?? "";
-$descricao = $_POST['descricao'] ?? "";
-$preco = $_POST['preco'] ?? "";
-$data = $_POST['data_hora'] ?? "";
-$cep = $_POST['cep'] ?? "";
-$bairro = $_POST['bairro'] ?? "";
-$cidade = $_POST['cidade'] ?? "";
-$estado = $_POST['estado'] ?? "";
-$categoria = $_POST['categoria'] ?? "";
-$imagem = $_POST['imagem'] ?? "";
+$titulo = $_POST["titulo"] ?? " ";
+$descricao = $_POST["descricao"] ?? " ";
+$preco = $_POST["preco"] ?? " ";
+$data_hora = $_POST["data_hora"] ?? " ";
+$cep = $_POST["cep"] ?? "";
+$bairro = $_POST["logradouro"] ?? " ";
+$cidade = $_POST["cidade"] ?? " ";
+$estado = $_POST["estado"] ?? " ";
+$categoria_id = $_POST["categoria"] ?? " ";
+$anunciante_id = $_POST["anunciante"] ?? " ";
+$nomeFoto = $_POST["nome_arq_foto"] ?? " ";
+
+$sql = <<<SQL
+  INSERT INTO anuncio (titulo, descricao, preco, data_hora, cep, bairro, cidade, estado, categoria_id, anunciante_id)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  SQL;
+
+$sql2 = <<<SQL
+  INSERT INTO foto (anuncio_id, nome_arq_foto)
+  VALUES (?, ?)
+  SQL;
 
 try {
+  $pdo->beginTransaction();
 
-    $sql = <<<SQL
-        SELECT codigo FROM categoria
-        WHERE nome = $categoria
-    SQL;
+  $stmt = $pdo->prepare($sql);
+  if (!$stmt->execute([
+    $titulo , $descricao, $preco, $data_hora, $cep, $bairro, $cidade, $estado,$categoria_id, $_SESSION['id']
+  ])) throw new Exception('Falha ao inserir o endereço');
 
-    $stmt = $pdo->query($sql);
-    $row = $stmt->fetch();
-    $codCategoria = $row['codigo'];
+  $anuncio_id = $pdo->lastInsertId();
 
-    $sql = <<<SQL
-        INSERT INTO anuncio(titulo, descricao, preco, data_hora, cep, bairro, cidade, estado, codCategoria, codAnunciante)
-        VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
-    SQL;
+  $stsmt2 = $pdo->prepare($sql2);
+  
+  if(!$stsmt2->execute([
+    $anuncio_id, $nomeFoto
+  ])) throw new Exception('Falha ao inserir a foto');
 
-    salvarImagem($imagem, $titulo);
+  $pdo->commit();
 
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$titulo, $descricao, $preco, $data, $cep, $bairro, $cidade, $estado, $categoria, $codCategoria, $_SESSION['id']]);
-    $codAnuncio = $pdo->lastInsertId();
-
-    $sql = <<<SQL
-
-        INSERT INTO foto(codAnuncio, nomeArqFoto)
-        VALUE (?, "ImagensAnuncios/" . $titulo)
-
-    SQL;
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$codAnuncio]);
-
-} catch(Exception $e) {
-    exit('Erro: ' . $e->getMessage());
+  header("Location: ../Privado/listarAnuncios.php");
+  exit();
+  
+} catch (Exception $e) {
+    $pdo->rollBack();
+    if ($e->errorInfo[1] === 1062)
+      exit('Dados duplicados: ' . $e->getMessage());
+    else
+      exit('Falha ao cadastrar os dados: ' . $e->getMessage());
 }
 
 ?>

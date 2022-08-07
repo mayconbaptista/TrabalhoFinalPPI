@@ -45,7 +45,7 @@ if($_SESSION['email']) {
                     <input type="password" name="senha" id="senha" class="input-login" required placeholder="digite sua senha">
                 </div>
                 <div class="div-login-btn">
-                    <button type="button" onclick="">Entrar</button>
+                    <button>Entrar</button>
                     <span id="resposta"></span>
                 </div>
             </form>

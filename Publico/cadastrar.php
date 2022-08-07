@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+
 if($_SESSION['email']) {
     header('Location: ../Privado/logado.php');
     exit;
@@ -19,7 +20,9 @@ if($_SESSION['email']) {
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/navbar.css">
+    <!--
     <link rel="stylesheet" href="../CSS/footer.css">
+    -->
     <link rel="stylesheet" href="../CSS/cadastrar.css">
 </head>
 <body>
@@ -33,7 +36,7 @@ if($_SESSION['email']) {
     </header>
 
     <main>
-        <form action="../CRUDs/CadAnunciante.php" method="post">
+        <form action="../PHP/cadastraAnunciante.php" method="post">
 
             <fieldset>
                 <legend>Informaçẽs Pessoais</legend>
