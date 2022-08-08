@@ -37,7 +37,7 @@ class anuncio {
 $sql = <<<SQL
 
     SELECT * FROM anuncio
-    WHERE id = $idAnuncio;
+    WHERE codigo = $idAnuncio;
 
 SQL;
 
@@ -48,7 +48,7 @@ if(!$row) {
     exit;
 }
 
-echo json_encode($row['codigo'], $row['titulo'], $row['descricao'], $row['preco'], $row['data_hora'], $row['cep'], $row['bairro'], $row['cidade'], $row['estado'], $row['codCategoria'], $row['codAnunciante']);
+echo json_encode(new anuncio($row['codigo'], $row['titulo'], $row['descricao'], $row['preco'], $row['data_hora'], $row['cep'], $row['bairro'], $row['cidade'], $row['estado'], $row['codCategoria'], $row['codAnunciante']));
 exit;
 
 ?>

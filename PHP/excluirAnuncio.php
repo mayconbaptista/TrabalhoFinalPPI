@@ -10,10 +10,10 @@ require "../ConexaoMySQL/MysqlConnect.php";
 $pdo = mysqlConnect();
 
 try {
-    $id = $_SESSION['id'];
+    $id = $_GET['id'] ?? "";
     $sql = <<<SQL
 
-        DELETE FROM anuncio WHERE codAnunciante = $id
+        DELETE FROM anuncio WHERE codigo = $id
 
     SQL;
 

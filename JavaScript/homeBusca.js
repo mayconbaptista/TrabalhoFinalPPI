@@ -12,20 +12,36 @@ async function requisicaoAjax(uri) {
 function mostraProdutos(objJS) {
     let arrayProdutos = objJS.anuncios;
     let section = document.querySelector("#prod-section");
-    let template = document.querySelector("#template");
     let qtdProd = section.childElementCount;
 
     for(let i = qtdProd; i < qtdProd + 10; ++i) {
         if(i >= arrayProdutos.length)
             break;
 
-        let html = template.innerHTML
-            .replace("{{prod-imagem}}", arrayProdutos[i].imagePath)
-            .replace("{{prod-nome}}", arrayProdutos[i].nome)
-            .replace("{{prod-peco}}", arrayProdutos[i].preco)
-            .replace("{{prod-descricao}}", arrayProdutos[i].descricao);
+        let novaDiv = document.createElement('div');
+        let img = document.createElement('img');
+        let h4 = document.createElement('h4');
+        let p1 = document.createElement('p');
+        let p2 = document.createElement('p');
 
-        section.insertAdjacentElementHTML("beforeend", html);
+        img.className = "anuncio-imagem";
+        img.alt = arrayProdutos[i].imagePath;
+        img.src = arrayProdutos[i].imagePath;
+
+        h4.className = "anuncio-nome";
+        h4.textContent = arrayProdutos[i].nome;
+        
+        p1.className = "anuncio-preco";
+        p1.textContent = arrayProdutos[i].preco;
+
+        p2.className = "anuncio-descricao";
+        p2.textContent = arrayProdutos[i].descricao;
+
+        novaDiv.appendChild(img);
+        novaDiv.appendChild(h4);
+        novaDiv.appendChild(p1);
+        novaDiv.appendChild(p2);
+        section.appendChild(novaDiv);
     }
 
     let h4s = document.querySelectorAll(".anuncio-nome");
@@ -36,7 +52,7 @@ function mostraProdutos(objJS) {
     }
 }
 
-function requisitaAnuncios(strKeyWords) {
+async function requisitaAnuncios(strKeyWords) {
     let uri = "../PHP/buscaAnuncios.php?busca=";
     let contagem = 0;
     var palavra = "";
@@ -62,11 +78,11 @@ function requisitaAnuncios(strKeyWords) {
             break;
     }
 
-    let objJS = requisicaoAjax(uri);
+    let objJS = await requisicaoAjax(uri);
     mostraProdutos(objJS);
 }
 
-window.onload = function () {
+window.addEventListener("load", function () {
     let inputBusca = document.querySelector("#busca");
     inputBusca.onkeyup = function (event) {
         if(event.key === "Enter") {
@@ -76,9 +92,11 @@ window.onload = function () {
             requisitaAnuncios(inputBusca.value);
         }
     }
-};
+});
 
 window.onscroll = function () {
+    let inputBusca = document.querySelector("#busca");
+
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         requisitaAnuncios(inputBusca.value);
     }

@@ -61,15 +61,6 @@ session_start();
 
 
         <section id="prod-section">
-        <!-- Template para inserção de anuncios com javascript e requisição AJAX -->
-            <template id="template">
-                <div class="anuncio">
-                    <img class="anuncio-imagem" alt="{{alt-imagem}}" src="Images/{{prod-imagem}}">
-                    <h4 class="anuncio-nome">{{prod-nome}}</h4>
-                    <p class="anuncio-preco">{{prod-preco}}</p>
-                    <p class="anuncio-descricao">{{prod-descricao}}</p>
-                </div>
-            </template>
         </section>
 
     </main>

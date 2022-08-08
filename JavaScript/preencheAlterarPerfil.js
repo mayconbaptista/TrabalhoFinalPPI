@@ -11,16 +11,16 @@ async function getAnunciante() {
     }
 }
 
-window.onload = function () {
-    let anuncio = getAnunciante();
+window.onload = async function () {
+    let anuncio = await getAnunciante();
     
     let inputNome = document.querySelector("#nome");
     let inputCpf = document.querySelector("#cpf");
     let inputTelefone = document.querySelector("#telefone");
     let inputSenha = document.querySelector("#senha");
 
-    inputNome.textContent = anunciante.nome;
-    inputCpf.textContent = anunciante.cpf;
-    inputTelefone.textContent = anunciante.telefone;
-    inputSenha.textContent = anunciante.cep;
+    inputNome.value = anunciante.nome;
+    inputCpf.value = anunciante.cpf;
+    inputTelefone.value = anunciante.telefone;
+    inputSenha.value = anunciante.cep;
 }

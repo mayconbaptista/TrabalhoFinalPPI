@@ -26,8 +26,8 @@ if(isset($_SESSION['email'])) {
     <header>
 
         <nav>
-            <a href="cadastrar.html">Cadastrar</a>
-            <a href="login.html">Login</a>
+            <a href="cadastrar.php">Cadastrar</a>
+            <a href="login.php">Login</a>
         </nav>
 
     </header>

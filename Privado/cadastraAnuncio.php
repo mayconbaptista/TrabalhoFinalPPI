@@ -2,8 +2,8 @@
 
 session_start();
 
-if(!isset($_SESSION['email'])) {
-    header('Location: ../Publico/login.php');
+if(!$_SESSION['email']) {
+    header('Location: ../PHP/desloga.php');
     exit;
 }
 
@@ -37,7 +37,11 @@ if(!isset($_SESSION['email'])) {
 
     <main>
         <div class="container">
-            <form id="myForm" action="../PHP/cadastraAnuncio.php" method="post">
+            <form id="myForm" action="../PHP/cadastrarAnuncio.php" method="post">
+                <div class="row" hidden>
+                    <label for="anunciante" class="form-label">id</label>
+                    <input type="number" name="anunciante" id="anunciante" class="form-control" value="1" required readonly>
+                </div>
                 <div class="row mt-3">
                     <label for="titulo" class="form-label">Titulo</label>
                     <input type="text" name="titulo" id="titulo" class="form-control" maxlength="20" required>
@@ -104,22 +108,15 @@ if(!isset($_SESSION['email'])) {
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <!--campo a ser preenchido com ajax-->
                     <div class="col-sm-4">
                         <label for="categoria" class="form-label">Categoria</label>
                         <select name="categoria" id="categoria" class="form-select" required>
-                            <option value=""></option>
-                            <option value="celular">Celular</option>
-                            <option value="computadores">Computadores</option>
-                            <option value="tablets">Tablets</option>
-                            <option value="monitores">Monitores</option>
-                            <option value="perifericos">Periféricos</option>
-                            <option value="outro">Outro</option>
+        
                         </select>
                     </div>
                     <div class="col-sm-8 form-group">
-                        <label for="imagem" class="form-label">Imagem</label>
-                        <input id="imagem" type="file" class="form-control" name="imagem">
+                        <label for="nome_arq_foto" class="form-label">Foto</label>
+                        <input type="file" name="nome_arq_foto" id="nome_arq_foto" class="form-control" required>
                     </div>
                 </div>
                 <div class="align-self-center mx-auto">
@@ -134,5 +131,7 @@ if(!isset($_SESSION['email'])) {
         <p>Copyright &copy; 2022 - Todos direitos reserados.</p>
 
     </footer>
+    <script src="../JavaScript/buscaCategoria.js"></script>
+    <script src="../JavaScript/buscaCep.js"></script>
 </body>
 </html>

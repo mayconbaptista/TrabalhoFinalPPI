@@ -38,12 +38,13 @@ if(!isset($_SESSION['email'])) {
     <main class="container p-3">
 
         <ul class="list-group">
-            <li class="list-group-item"><a href="cadAnuncio.php">Fazer Anúncio</a></li>
+            <li class="list-group-item"><a href="cadastraAnuncio.php">Fazer Anúncio</a></li>
             <li class="list-group-item"><a href="listarAnuncios.php">Mostrar Meus Anúncios</a></li>
             <li class="list-group-item"><a href="escolherAnuncioAlterar.php">Editar Anúncio</a></li>
-            <li class="list-group-item"><a href="">Excluir Anúncio</a></li>
-            <li class="list-group-item"><a href="">Ver Menssagens de Interesse</a></li>
-            <li class="list-group-item"><a href="">Editar Perfil</a></li>
+            <li class="list-group-item"><a href="excluirAnuncio.php">Excluir Anúncio</a></li>
+            <li class="list-group-item"><a href="listarInteresses.php">Ver Menssagens de Interesse</a></li>
+            <li class="list-group-item"><a href="excluirInteresse.php">Excluir Menssagens de Interesse</a></li>
+            <li class="list-group-item"><a href="alterarPerfil.php">Editar Perfil</a></li>
         </ul>
 
     </main>

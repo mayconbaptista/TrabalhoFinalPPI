@@ -8,12 +8,11 @@ async function getIds() {
 
     } catch(e) {
         console.log(e);
-        alert('Não foi possível achar os ids dos anuncios');
     }
 }
 
-window.onload = function () {
-    let anuncios = getIds();
+window.onload = async function () {
+    let anuncios = await getIds();
     let select = document.querySelector('#id');
 
     for(let anuncio of anuncios.arr) {

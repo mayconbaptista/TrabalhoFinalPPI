@@ -11,8 +11,8 @@ async function buscaInteresses() {
     }
 }
 
-window.onload = () => {
-    let interesses = buscaInteresses();
+window.onload = async () => {
+    let interesses = await buscaInteresses();
     let select = document.querySelector('#id');
 
     for(let interesse of interesses) {

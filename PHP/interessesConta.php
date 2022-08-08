@@ -46,10 +46,8 @@ try {
     SQL;
 
     $stmt = $pdo->query($sql);
-    
-    if(!$row) echo json_encode(new arrayInteresse([]));
-    
-    $arr = array();
+
+    $arr = [];
     $i = 0;
 
     while($row = $stmt->fetch()) {

@@ -49,7 +49,7 @@ $id = $_SESSION['id'];
 
 try {
     $sql = <<<SQL
-        SELECT * FROM anunciante
+        SELECT * FROM anuncio
         WHERE codAnunciante = $id
     SQL;
     $stmt = $pdo->query($sql);

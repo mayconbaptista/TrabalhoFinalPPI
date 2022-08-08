@@ -34,7 +34,7 @@ if(!isset($_SESSION['email'])) {
         </nav>
 
     </header>
-    
+
     <main class="container">
 
         <form action="../PHP/excluirAnuncio.php" method="GET">
