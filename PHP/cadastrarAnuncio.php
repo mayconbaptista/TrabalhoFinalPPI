@@ -2,9 +2,8 @@
 
 session_start();
 
-function salvarImagem($img, $nome) {
-  $dir = 'ImagensAnuncios/';
-  move_uploaded_file($img, $dir . $nome);
+function salvarImagem($caminho) {
+  move_uploaded_file($_FILES["nome_arq_foto"]['tmp_name'], "../" . $caminho);
 }
 
 require "../ConexaoMySQL/MysqlConnect.php";
@@ -26,7 +25,6 @@ $cidade = $_POST["cidade"] ?? "";
 $estado = $_POST["estado"] ?? "";
 $categoria_id = $_POST["categoria"] ?? "";
 $anunciante_id = $_POST["anunciante"] ?? "";
-$nomeFoto = $_FILE["nome_arq_foto"] ?? "";
 
 $sql = <<<SQL
   INSERT INTO anuncio (titulo, descricao, preco, data_hora, cep, bairro, cidade, estado, codCategoria, codAnunciante)
@@ -48,7 +46,7 @@ try {
 
   $anuncio_id = $pdo->lastInsertId();
   $nome = $anuncio_id . ".jpg";
-  salvarImagem($nomeFoto, $nome);
+  salvarImagem("ImagensAnuncios/" . $nome);
 
   $stsmt2 = $pdo->prepare($sql2);
   

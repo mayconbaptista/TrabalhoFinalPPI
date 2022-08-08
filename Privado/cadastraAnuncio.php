@@ -37,7 +37,7 @@ if(!$_SESSION['email']) {
 
     <main>
         <div class="container">
-            <form id="myForm" action="../PHP/cadastrarAnuncio.php" method="post">
+            <form id="myForm" action="../PHP/cadastrarAnuncio.php" enctype="multipart/form-data" method="post">
                 <div class="row" hidden>
                     <label for="anunciante" class="form-label">id</label>
                     <input type="number" name="anunciante" id="anunciante" class="form-control" value="1" required readonly>
