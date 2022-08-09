@@ -48,6 +48,11 @@ session_start();
 
     <main>
 
+        <div>
+            <img src="Images/logo.png" alt="Logo marca" width="100" height="100"> 
+            <h1>Ótimo Negócio</h1>
+        </div>
+
         <form onsubmit="return false;" id="busca-form">
             <div class="busca-anuncios">
                 <label for="busca" class="busca-label">Busca</label>
