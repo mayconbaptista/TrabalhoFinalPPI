@@ -57,14 +57,14 @@ try{
 
     <main class="container">
 
-        <table>
+        <table class="table">
             <thead>
                 <tr>
-                    <th>Código</th>
-                    <th>Mensagem</th>
-                    <th>Data</th>
-                    <th>Contato</th>
-                    <th>Código Anúncios</th>
+                    <th scope="row">Código</th>
+                    <th scope="row">Mensagem</th>
+                    <th scope="row">Data</th>
+                    <th scope="row">Contato</th>
+                    <th scope="row">Código Anúncios</th>
                 </tr>
             </thead>
 
@@ -82,11 +82,11 @@ try{
                         echo <<<HTML
 
                             <tr>
-                                <td>$codigo</td>
-                                <td>$nome</td>
-                                <td>$descricao</td>
-                                <td>$preco</td>
-                                <td>$data</td>
+                                <td scope="row">$codigo</td>
+                                <td scope="row">$nome</td>
+                                <td scope="row">$descricao</td>
+                                <td scope="row">$preco</td>
+                                <td scope="row">$data</td>
                             </tr>
 
                         HTML;

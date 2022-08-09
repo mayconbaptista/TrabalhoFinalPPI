@@ -17,10 +17,9 @@ window.onload = async function () {
     let inputNome = document.querySelector("#nome");
     let inputCpf = document.querySelector("#cpf");
     let inputTelefone = document.querySelector("#telefone");
-    let inputSenha = document.querySelector("#senha");
 
-    inputNome.value = anunciante.nome;
-    inputCpf.value = anunciante.cpf;
-    inputTelefone.value = anunciante.telefone;
-    inputSenha.value = anunciante.cep;
+    inputNome.value = anuncio.nome;
+    inputCpf.value = anuncio.cpf;
+    inputTelefone.value = anuncio.telefone;
+    inputSenha.value = anuncio.cep;
 }

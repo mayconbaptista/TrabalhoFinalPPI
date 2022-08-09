@@ -59,7 +59,7 @@ if(!isset($_SESSION['email'])) {
                 <legend>Informaçẽs de Login</legend>
                 <div>
                     <label for="senha">Senha</label>
-                    <input type="password" name="senha" id="senha" placeholder="Registre sua senha">
+                    <input type="password" name="senha" id="senha" required placeholder="Registre sua senha">
                 </div>
             </fieldset>
 
