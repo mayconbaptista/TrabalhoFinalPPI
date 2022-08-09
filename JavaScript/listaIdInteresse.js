@@ -7,7 +7,6 @@ async function buscaInteresses() {
         return interesses.arr;
     } catch(e) {
         console.log(e);
-        alert('Não foi possível encontrar os Ids dos interesses!');
     }
 }
 

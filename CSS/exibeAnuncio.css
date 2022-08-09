@@ -1,0 +1,47 @@
+main{
+    width: 40%;
+    margin: 0 auto;
+}
+
+
+h1{
+    text-align: center;
+}
+
+h3{
+    text-align: justify;
+    color: green;
+}
+
+img{
+    float:left;
+    margin: 15px;
+}
+
+input {
+    display: block;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    display: block;
+    height: 150px; width: 300px;
+    margin-bottom: 10px;
+}
+
+button {
+    color: white;
+    border: none;
+    width: 100px;
+    height: 25px;
+    border-radius: 2px;
+    background-color: blue;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: gray;
+    color: black;
+    transition: .1s;
+}

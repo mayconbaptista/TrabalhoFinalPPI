@@ -19,7 +19,6 @@ session_start();
     <link rel="stylesheet" href="CSS/home.css">
 
     <script src="JavaScript/homeBusca.js"></script>
-    <script src="JavaScript/abrirAnuncio.js"></script>
 </head>
 <body>
     <header>
@@ -34,7 +33,6 @@ session_start();
                         <a href="Publico/login.php">Login</a>
                     </nav>
                 HTML;
-
             else
                 echo <<<HTML
                     <nav>
@@ -50,11 +48,11 @@ session_start();
 
     <main>
 
-        <form id="busca-form">
+        <form onsubmit="return false;" id="busca-form">
             <div class="busca-anuncios">
                 <label for="busca" class="busca-label">Busca</label>
                 <input type="text" id="busca" class="busca-input" placeholder="Busque com palavras chaves">
-                <span class="busca-mensagem"></span>
+                <button type="button" class="btn" id="btn">Buscar</button>
             </div>
         </form>
         <hr>
@@ -67,7 +65,10 @@ session_start();
 
     <footer>
 
-        <p>Copyright &copy; 2022 - Todos direitos reserados.</p>
+        <p>
+            <img src="Images/logo.png" alt="Logo marca" width="30" height="30">
+            Copyright &copy; 2022 - Todos direitos reserados.
+        </p>
 
     </footer>
 </body>

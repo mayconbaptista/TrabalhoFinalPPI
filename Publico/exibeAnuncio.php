@@ -4,27 +4,20 @@ session_start();
 require "../ConexaoMySQL/MysqlConnect.php";
 $pdo = mysqlConnect();
 
-$nome = $_GET['nome'] ?? "";
+$imagePath = $_GET['imagePath'] ?? "";
 
 try {
     $sql = <<<SQL
 
-        SELECT * FROM anuncio WHERE titulo = $nome
+        SELECT anuncio.* FROM anuncio, foto
+        WHERE foto.nomeArqFoto = ? and
+            foto.codAnuncio = anuncio.codigo
 
     SQL;
 
-    $stmt = $pdo->query($sql);
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$imagePath]);
     $anuncio = $stmt->fetch();
-    $codAnuncio = $anuncio['codigo'];
-
-    $sql = <<<SQL
-
-        SELECT nomeArqFoto FROM foto WHERE codAnuncio = $codAnuncio;
-
-    SQL;
-
-    $stmt = $pdo->query($sql);
-    $caminho = $stmt->fetch();
 
 } catch(Exception $e) {
     exit('ERRO: ' . $e->getMessage());
@@ -41,9 +34,10 @@ try {
     <title>Visualização de Anúncio</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/reset.css">
-    <link rel="stylesheet" href="CSS/navbar.css">
-    <link rel="stylesheet" href="CSS/footer.css">
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/navbar.css">
+    <link rel="stylesheet" href="../CSS/footer.css">
+    <link rel="stylesheet" href="../CSS/exibeAnuncio.css">
 </head>
 <body>
     <header>
@@ -77,21 +71,23 @@ try {
         <?php
             $nome = $anuncio['titulo'];
             $preco = $anuncio['preco'];
-            $descricao = $anuncio['anuncio'];
+            $descricao = $anuncio['descricao'];
 
             echo <<<HTML
                 <h1 id="titulo">$nome</h1>
                 <h3 id="preco">$preco</h3>
                 <p id="descricao">$descricao</p>
             HTML;
+
+            $imagePath = "../" . $imagePath;
         ?>
-        <img id="imagem" src="<?php echo $caminho; ?>" alt="Imagem do anúncio">
+        <img id="imagem" src="<?php echo $imagePath; ?>" width="300" height="300" alt="Imagem do anúncio">
 
         <form action="../PHP/registraInteresse.php?cod=<?php echo $anuncio['codigo']; ?>" method="post">
 
             <div>
-                <textarea name="mensagem" id="messagem" placeholder="Envie uma menssagem" required>
                 <label for="mensagem">Messagem de Interesse</label>
+                <textarea name="mensagem" id="messagem" placeholder="Envie uma menssagem" required></textarea>
             </div>
 
             <div>
@@ -112,7 +108,10 @@ try {
 
     <footer>
 
-        <p>Copyright &copy; 2022 - Todos direitos reserados.</p>
+        <p>
+            <img src="../Images/logo.png" alt="Logo marca" width="30" height="30">
+            Copyright &copy; 2022 - Todos direitos reserados.
+        </p>
 
     </footer>
 </body>

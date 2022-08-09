@@ -116,7 +116,7 @@ if(!$_SESSION['email']) {
                     </div>
                     <div class="col-sm-8 form-group">
                         <label for="nome_arq_foto" class="form-label">Foto</label>
-                        <input type="file" name="nome_arq_foto" id="nome_arq_foto" class="form-control" required>
+                        <input type="file" accept="image/png, image/jpeg" name="nome_arq_foto" id="nome_arq_foto" class="form-control" required>
                     </div>
                 </div>
                 <div class="align-self-center mx-auto">
@@ -128,7 +128,10 @@ if(!$_SESSION['email']) {
 
     <footer>
 
-        <p>Copyright &copy; 2022 - Todos direitos reserados.</p>
+        <p>
+            <img src="../Images/logo.png" alt="Logo marca" width="30" height="30">
+            Copyright &copy; 2022 - Todos direitos reserados.
+        </p>
 
     </footer>
     <script src="../JavaScript/buscaCategoria.js"></script>

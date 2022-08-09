@@ -25,81 +25,71 @@ class arrayAnuncios {
 }
 
 
-function separaPalavras($str) {
-    $arr = [];
-    $j = 0;
-    $numPalavra = 0;
-
-    for($i = 0; $i < strlen($str); ++$i) {
-        if($str[$i] == ";") {
-            $palavra = '';
-            for($z = 0; $j < $i; ++$j, ++$z)
-                $palavra[$z] = $str[$j];
-
-            $arr[$numPalavra] = $palavra;
-            ++$j;
-            ++$numPalavra;
-
-            if($numPalavra >= 5)
-                break;
-        }
-    }
-
-    return $arr;
-}
-
-
-$palavrasChave = $_GET['busca'] ?? '';
-$palavras = separaPalavras($palavrasChave);
+$palavrasChave = $_GET['palavras'] ?? '';
+$palavras = explode(';', $palavrasChave);
+$size = count($palavras);
 
 $pdo = mysqlConnect();
 $arr = [];
 
-try {
+if($size == 1){
+
     $sql = <<<SQL
-
-        SELECT codigo, titulo, descricao, preco
-        FROM anuncio
-        WHERE 1 = 1 AND
-
+        SELECT * FROM  anuncio a join foto f on a.codigo = f.codAnuncio
+        where a.descricao like ?
     SQL;
 
-    for($i = 0; $i < count($palavras); ++$i) {
-        $aux = <<<SQL
-            descricao like ‘%?%’
-        SQL;
-        $sql = $sql . $aux;
-    }
+}else if($size == 2){
 
-    $aux = <<<SQL
-
-        ORDER BY data_hora DESC
-
+    $sql = <<<SQL
+        SELECT * FROM  anuncio a join foto f on a.codigo = f.codAnuncio
+            where a.descricao like ?
+            or a.descricao like ?
     SQL;
-    $sql = $sql . $aux;
 
+}else if($size == 3){
+
+    $sql = <<<SQL
+        SELECT * FROM  anuncio a join foto f on a.codigo = f.codAnuncio
+            where a.descricao like ?
+            or a.descricao like ?
+            or a.descricao like ?
+    SQL;
+ 
+}else if($size == 4){
+
+    $sql = <<<SQL
+        SELECT * FROM  anuncio a join foto f on a.codigo = f.codAnuncio
+            where a.descricao like ?
+            or a.descricao like ?
+            or a.descricao like ?
+            or a.descricao like ?
+    SQL;
+
+}else if($size == 5){
+
+    $sql = <<<SQL
+        SELECT * FROM  anuncio a join foto f on a.codigo = f.codAnuncio
+            where a.descricao like ?
+            or a.descricao like ?
+            or a.descricao like ?
+            or a.descricao like ?
+            or a.descricao like ?
+    SQL;
+}
+
+try {
     $stmt = $pdo->prepare($sql);
-    $stmt->execute($palavras);
-
-    $i = 0;
-    while($row = $stmt->fetch()) {
-        $codigo = $row['codigo'];
-
-        $sql = <<<SQL
-            SELECT nomeArqFoto
-            FROM foto
-            WHERE codAnuncio = ?
-        SQL;
-
-        $stmt2 = $pdo->prepare($sql);
-        $stmt2->execute([$codigo]);
-
-        $row2 = $stmt2->fetch();
-        $arr[$i] = new anuncio($row['nome'], $row['descricao'], $row['preco'], $row2['nomeArqFoto']);
-    }
+    if(!$stmt->execute($palavras)) throw new Exception("Erro ao buscar os nomes");
 
 } catch(Exception $e) {
-    exit('Erro: ' . $e->getMessage());
+    exit("Erro " . $e->getMessage());
+}
+
+$arr = array();
+
+while($row = $stmt->fetch()) {
+    $arr[] = new anuncio ($row['titulo'], $row['descricao'], $row['preco'], $row['nomeArqFoto']);
 }
 
 $arrAnun = new arrayAnuncios($arr);

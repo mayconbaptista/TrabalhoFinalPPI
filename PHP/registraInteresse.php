@@ -11,7 +11,7 @@ $contato = $_POST['contato'] ?? "";
 try {
     $sql = <<<SQL
     
-        INSERT INTO interesse(mensagem, data_hora, contato, codAnunciante)
+        INSERT INTO interesse(mensagem, data_hora, contato, codAnuncio)
         VALUES (?, ?, ?, ?)
     
     SQL;
@@ -22,5 +22,8 @@ try {
 } catch (Exception $e) {
     exit('ERRO: ' . $e->getMessage());
 }
+
+header("Location: ../.");
+exit;
 
 ?>

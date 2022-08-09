@@ -9,11 +9,11 @@ if(!isset($_SESSION['email'])) {
     exit;
 }
 
-$codAnuncio = $_GET['id'] ?? "";
+$codigo = $_GET['id'] ?? "";
 
 $sql = <<<SQL
 
-    DELETE FROM interesse WHERE codAnuncio = ?
+    DELETE FROM interesse WHERE codigo = $codigo
 
 SQL;
 
@@ -22,5 +22,8 @@ try {
 } catch(Exception $e) {
     exit("ERRO: " . $e->getMessage());
 }
+
+header('Location: ../Privado/logado.php');
+exit;
 
 ?>

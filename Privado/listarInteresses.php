@@ -101,7 +101,10 @@ try{
 
     <footer>
 
-        <p>Copyright &copy; 2022 - Todos direitos reserados.</p>
+        <p>
+            <img src="../Images/logo.png" alt="Logo marca" width="30" height="30">
+            Copyright &copy; 2022 - Todos direitos reserados.
+        </p>
 
     </footer>
 </body>

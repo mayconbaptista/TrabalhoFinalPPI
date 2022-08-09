@@ -6,6 +6,7 @@ main {
 
 form {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 label {
@@ -17,8 +18,56 @@ label {
 
 input {
     margin: 0 auto;
-    display: block;
+    display: inline-block;
     text-align: center;
     width: 400px;
     height: 50px;
+}
+
+.anuncio {
+    padding: 15px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.anuncio-inf {
+    float: right;
+}
+
+.anuncio-imagem {
+    width: 300px; height: 300px;
+    border-radius: 15px;
+    float: left;
+}
+
+.anuncio-nome {
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.anuncio-nome:hover {
+    display: block;
+    cursor: pointer;
+}
+
+.anuncio-preco {
+    color: green;
+    font-size: 1.25em;
+}
+
+.anuncio-descricao {
+    display: block;
+}
+
+.btn {
+    display: inline-block;
+    color: white;
+    border: none;
+    width: 150px;
+    height: 50px;
+    border-radius: 2px;
+    background-color: blue;
 }

@@ -51,7 +51,7 @@ try {
     $i = 0;
 
     while($row = $stmt->fetch()) {
-        $arr[$i] = new interesse($row['codigo'], $row['mesagem'], $row['data_hora'], $row['contato'], $row['codAnuncio']);
+        $arr[$i] = new interesse($row['codigo'], $row['mensagem'], $row['data_hora'], $row['contato'], $row['codAnuncio']);
         ++$i;
     }
 
